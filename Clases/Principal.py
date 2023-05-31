@@ -8,6 +8,7 @@ from PyQt5.QtGui import QIcon, QFont, QRegExpValidator
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel, QLineEdit, QTableWidgetItem, QMessageBox
 from pulp import LpMaximize, LpProblem, LpMinimize, LpVariable, lpSum, LpInteger, LpBinary
 
+
 class interfaz(QMainWindow):
 
     def __init__(self):
@@ -32,10 +33,7 @@ class interfaz(QMainWindow):
         self.gen.clicked.connect(self.resolver)
 
     def actualizar_campos(self, num):
-        if (num == 2):
-            self.TGra.setVisible(True)
-        else:
-            self.TGra.setVisible(False)
+
         self.crear()
 
     def crear(self):
@@ -145,8 +143,8 @@ class interfaz(QMainWindow):
 
         valorrestr = [LpVariable(f'x{i}', lowBound=0) for i in range(self.Tres.rowCount())]
 
-        coeficientes=0
-        varaux=0
+        coeficientes = 0
+        varaux = 0
         for i in range(self.Tres.rowCount()):
             aux = self.Tres.item(i, 1).text()
             if aux == "Int" or aux == "Binario":
@@ -199,8 +197,6 @@ class interfaz(QMainWindow):
             self.Tsol.setItem(i, 2, item3)
 
         self.varS.setText(saux)
-
-
 
 
 if __name__ == '__main__':
